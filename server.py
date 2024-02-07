@@ -7,13 +7,12 @@ CORS(app)  # Enable CORS for all routes
 
 @app.route('/api/data')
 def get_data():
-    data = {'message': 'Hello from Flask Reza!'}
+    data = {'message': 'Hugging Face Flask With React Js'}
     return jsonify(data)
 
 @app.route('/api/input', methods=['POST'])
 def prediction ():
     result = []
-    kalimat  = ""
     pretrained_name = "w11wo/indonesian-roberta-base-sentiment-classifier"
     if request.method == "POST":
         data = request.json
@@ -26,9 +25,9 @@ def prediction ():
         getKalimat = data.get('name')
         result = nlp(getKalimat)
     return jsonify({'message': 'Data received successfully',
-                    'Kalimat':data,
-                    'hasil':result})
-    
+                    'Kalimat':getKalimat,
+                    'hasil':result[0]['label'],
+                    'score':result[0]['score']})
    
 
 

@@ -12,13 +12,13 @@ function Home() {
         setData(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        throw error
       });
   }, []);
   return (
     <>
       <Center bg="tomato" h="100px" w="100%" color="white" mt={5} mb={5} mx={5}>
-        <Text fontWeight={"bold"}> Prediction Gender</Text>
+        <Text fontWeight={"bold"}> Prediction Sentiment Words </Text>
       </Center>
 
       <Center>
