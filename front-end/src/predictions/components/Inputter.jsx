@@ -1,8 +1,8 @@
-import { Input, Button, Center } from "@chakra-ui/react";
+import { Input, Button } from "@chakra-ui/react";
 import { Suspense, lazy, useState } from "react";
 import Loading from "./Loading";
 import { PostAPiFlask } from "../../services/GetApi";
-const ResultPrediction= lazy(() => import('./ResultPrediction'));
+const ResultPrediction = lazy(() => import("./ResultPrediction"));
 
 function Inputter() {
   const [formData, setFormData] = useState({
@@ -20,7 +20,7 @@ function Inputter() {
         setResponseMessage(response.data);
       })
       .catch((error) => {
-        throw error
+        throw error;
       });
   };
   return (
@@ -33,14 +33,12 @@ function Inputter() {
           value={formData.name}
           onChange={handleChange}
         ></Input>
-        <Center>
-          {responseMessage < 0 ? null : (
-            <Button type="submit" colorScheme="teal" size="md" mt={5} mb={5}>
-              {" "}
-              Prediction{" "}
-            </Button>
-          )}
-        </Center>
+        {responseMessage < 0 ? null : (
+          <Button type="submit" colorScheme="teal" size="md" mt={5} mb={5}>
+            {" "}
+            Prediction{" "}
+          </Button>
+        )}
       </form>
       <Suspense fallback={<Loading />}>
         <ResultPrediction props={responseMessage} />

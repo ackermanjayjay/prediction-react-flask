@@ -1,4 +1,10 @@
+import { Text } from "@chakra-ui/react";
+
 function Loading() {
-  return <h2>🌀 Loading...</h2>;
+  return (
+    <>
+      <Text>Loading</Text>🌀
+    </>
+  );
 }
 export default Loading;

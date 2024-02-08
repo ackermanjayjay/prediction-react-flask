@@ -27,7 +27,7 @@ def prediction ():
     return jsonify({'message': 'Data received successfully',
                     'Kalimat':getKalimat,
                     'hasil':result[0]['label'],
-                    'score':result[0]['score']})
+                    'score':result[0]['score']}),200
    
 
 
