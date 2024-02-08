@@ -1,8 +1,9 @@
 import { Input, Button, Center } from "@chakra-ui/react";
-import { Suspense, useState } from "react";
-import axios from "axios";
-import ResultPrediction from "./ResultPrediction";
+import { Suspense, lazy, useState } from "react";
 import Loading from "./Loading";
+import { PostAPiFlask } from "../../services/GetApi";
+const ResultPrediction= lazy(() => import('./ResultPrediction'));
+
 function Inputter() {
   const [formData, setFormData] = useState({
     name: "",
@@ -14,8 +15,7 @@ function Inputter() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://127.0.0.1:5000/api/input", formData)
+    PostAPiFlask(formData)
       .then((response) => {
         setResponseMessage(response.data);
       })
