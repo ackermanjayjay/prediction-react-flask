@@ -38,32 +38,37 @@ function ResultPrediction({ props }) {
   if (hasil === undefined || Kalimat === undefined || score === undefined) {
     return null;
   }
+  console.log({
+    data: {
+      Kalimat,
+      hasil,
+      score,
+    },
+  });
 
   // Render the component
   return (
     <Container>
-      {props >= 0 && (
-        <TabContainer>
-          <TabHeader>
-            <div>Prediction</div>
-          </TabHeader>
-          <TabContent>
-            {Kalimat != null && hasil != null && (
-              <div>
-                <Text
-                  style={{
-                    color: hasil === "negative" ? "tomato" : "teal",
-                  }}
-                >
-                  {hasil}
-                </Text>
-                <Text>{Kalimat}</Text>
-                <Text>{score * 100}</Text>
-              </div>
-            )}
-          </TabContent>
-        </TabContainer>
-      )}
+      <TabContainer>
+        <TabHeader>
+          <div>Prediction</div>
+        </TabHeader>
+        <TabContent>
+          {Kalimat != null && hasil != null && (
+            <div>
+              <Text
+                style={{
+                  color: hasil === "negative" ? "tomato" : "teal",
+                }}
+              >
+                {hasil}
+              </Text>
+              <Text>{Kalimat}</Text>
+              <Text>{score * 100}</Text>
+            </div>
+          )}
+        </TabContent>
+      </TabContainer>
     </Container>
   );
 }
