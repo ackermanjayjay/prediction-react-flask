@@ -1,12 +1,25 @@
-import { Text, Center, Stack } from "@chakra-ui/react";
-import Inputter from "../components/Inputter";
-import { GetAPiFlask } from "../../services/GetApi";
 import { useState, useEffect } from "react";
-import AboutWords from "./AboutWords";
-import ProfileWords from "./ProfileWords";
+import styled from "styled-components";
+import Inputter from "../components/Input/Inputter";
+import { GetAPiFlask } from "../../services/GetApi";
 
-function Home() {
+const Home = () => {
+  const Container = styled.div`
+    margin-top: 50px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+  `;
+
+  const BoldText = styled.h2`
+    font-weight: bold;
+    text-align: justify;
+  `;
   const [data, setData] = useState({});
+
   useEffect(() => {
     GetAPiFlask()
       .then((response) => {
@@ -19,21 +32,15 @@ function Home() {
 
   return (
     <>
-      <ProfileWords />
-      <Center mt={5} mb={5} mx={5}>
-        <Stack spacing={3}>
-          <Text fontWeight="bold" textAlign="justify">
-            {" "}
-            Prediction Sentiment Words{" "}
-          </Text>
-          <Text fontWeight="bold" textAlign="justify">
-            {data.message}
-          </Text>
-        </Stack>
-      </Center>
-      <Inputter></Inputter>
-      <AboutWords />
+      <Container>
+        <div>
+          <BoldText>Prediction Sentiment Words</BoldText>
+          <BoldText>{data.message}</BoldText>
+        </div>
+      </Container>
+      <Inputter />
     </>
   );
-}
+};
+
 export default Home;

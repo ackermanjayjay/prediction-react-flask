@@ -1,17 +1,18 @@
-import { Box, ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./predictions/components/Navbar";
 import Home from "./predictions/views/HomePages";
-import NavigationBar from "./predictions/components/NavigationBar";
+import PredictionPage from "./predictions/views/PredictionPages";
+import "./App.css";
 
 function App() {
   return (
-    <>
-      <ChakraProvider>
-        <Box boxShadow="dark-lg"  mb={5} gap={5}>
-          <NavigationBar></NavigationBar>
-        </Box>
-          <Home></Home>
-      </ChakraProvider>
-    </>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/prediction" element={<PredictionPage />} />
+      </Routes>
+    </Router>
   );
 }
 
