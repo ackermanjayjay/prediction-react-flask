@@ -64,7 +64,7 @@ function ResultPrediction({ props }) {
                 {hasil}
               </Text>
               <Text>{Kalimat}</Text>
-              <Text>{score * 100}</Text>
+              <Text>{score}</Text>
             </div>
           )}
         </TabContent>

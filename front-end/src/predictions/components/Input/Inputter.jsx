@@ -29,6 +29,12 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+const ButtonGroup = styled.div`
+  padding: 10px 20px;
+  margin-right: 10px;
+  display: flex;
+`;
+
 function Inputter() {
   const [formData, setFormData] = useState({
     name: "",
@@ -53,14 +59,18 @@ function Inputter() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          placeholder="Text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        {responseMessage < 0 ? null : <Button type="submit">Prediction</Button>}
+        <ButtonGroup>
+          <Input
+            type="text"
+            placeholder="Text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+          {responseMessage < 0 ? null : (
+            <Button type="submit">Prediction</Button>
+          )}
+        </ButtonGroup>
       </form>
       <Suspense fallback={<Loading />}>
         <ResultPrediction props={responseMessage} />

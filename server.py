@@ -7,7 +7,7 @@ CORS(app)  # Enable CORS for all routes
 
 @app.route('/api/data')
 def get_data():
-    data = {'message': 'Hugging Face Flask With React Js'}
+    data = {'message': 'Indonesian RoBERTa Base Sentiment Classifier'}
     return jsonify(data)
 
 @app.route('/api/input', methods=['POST'])
